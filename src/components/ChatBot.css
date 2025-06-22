@@ -1,0 +1,153 @@
+.chat-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #f9e0ff, #e4ccff);
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.chat-header {
+  background: #fff;
+  padding: 12px 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #555;
+  font-size: 1rem;
+  z-index: 2;
+}
+
+.chat-header span {
+  font-size: 0.85em;
+  color: green;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 15px 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+
+.chat-bubble {
+  max-width: 85%;
+  padding: 10px 15px;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  animation: popIn 0.3s ease forwards;
+  transform-origin: bottom left;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.chat-bubble.user {
+  align-self: flex-end;
+  background: #a74cff;
+  color: white;
+  border-bottom-right-radius: 0;
+  transform-origin: bottom right;
+}
+
+.chat-bubble.bot {
+  align-self: flex-start;
+  background: #ffffff;
+  color: #333;
+  border-bottom-left-radius: 0;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background: #fff;
+  z-index: 2;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  margin-right: 10px;
+  outline: none;
+  font-size: 1rem;
+  background: #f3f3f3;
+}
+
+.chat-input button {
+  background: #a74cff;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.chat-body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* MOBILE STYLE (sticky header & input) */
+@media screen and (max-width: 768px) {
+  .chat-container {
+    height: 100vh;
+    width: 100vw;
+    max-width: none;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+  }
+
+  .chat-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+  }
+
+  .chat-input {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+  }
+
+  .chat-body {
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    padding: 15px 10px;
+  }
+}
